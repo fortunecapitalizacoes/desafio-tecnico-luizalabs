@@ -104,6 +104,11 @@ POST /upload
 ### Arquivo Swagger
 A especificação OpenAPI para esta API está disponível no arquivo swagger.json.
 
+
+![Descrição da Imagem](./arquitetura/projetoLuizaLabs-Containner.jpg)
+
+
+
 ### Contribuições
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.
 
