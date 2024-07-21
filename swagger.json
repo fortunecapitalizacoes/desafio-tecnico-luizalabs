@@ -41,15 +41,27 @@
         }
       },
       "get": {
-        "summary": "Obtém uma lista de usuários",
+        "summary": "Obtém uma lista de todos os usuários",
         "parameters": [
           {
-            "name": "user_id",
+            "name": "page",
             "in": "query",
-            "description": "ID do usuário",
+            "required": false,
             "schema": {
-              "type": "integer"
-            }
+              "type": "integer",
+              "default": 1
+            },
+            "description": "Número da página"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            },
+            "description": "Número de resultados por página"
           }
         ],
         "responses": {
@@ -58,9 +70,26 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/User"
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer",
+                      "example": 100
+                    },
+                    "page": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "example": 10
+                    },
+                    "users": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/User"
+                      }
+                    }
                   }
                 }
               }
@@ -157,6 +186,39 @@
           },
           "404": {
             "description": "Usuário não encontrado"
+          }
+        }
+      }
+    },
+    "/users/name/{name}": {
+      "get": {
+        "summary": "Obtém usuários pelo nome",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de usuários encontrados",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum usuário encontrado"
           }
         }
       }

@@ -9,6 +9,7 @@ router.get('/users/:userId', userController.getUserById);
 router.get('/users', userController.getUsers);
 router.put('/users/:userId', userController.updateUser);
 router.delete('/users/:userId', userController.deleteUser);
+router.get('/users/name/:name', userController.getUserByName);
 
 // Nova rota para upload de arquivos
 router.post('/upload', upload.single('file'), userController.handleFileUpload);
