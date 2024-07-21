@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const PedidoDTO = require('../dtos/PedidoDTO');
-
+const UserService = require('../services/userService');
 const processTextFile = (filePath) => {
 
   const pedidos = [];
@@ -21,7 +21,7 @@ const processTextFile = (filePath) => {
 
       const usuarios = groupPedidosByUser(pedidos);
       usuarios.forEach(usuario => {
-       console.log(usuario)
+        UserService.createUser(usuario)
       })
       resolve();
     });
