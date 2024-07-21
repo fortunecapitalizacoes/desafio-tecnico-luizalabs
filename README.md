@@ -104,9 +104,14 @@ POST /upload
 ### Arquivo Swagger
 A especificação OpenAPI para esta API está disponível no arquivo swagger.json.
 
+## Visão C4-1 Contexto:
+![c4-1-CONTEXTO](./arquitetura/projetoLuizaLabs-Contexto.jpg)
 
-![Descrição da Imagem](./arquitetura/projetoLuizaLabs-Containner.jpg)
+## Visão C4-2 Containner:
+![c4-2-CONTAINNER](./arquitetura/projetoLuizaLabs-Containner.jpg)
 
+## Visão C4-3 Controller:
+![c4-3-CONTROLLER](./arquitetura/projetoLuizaLabs-Controller.jpg)
 
 
 ### Contribuições
