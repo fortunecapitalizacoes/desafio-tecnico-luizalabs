@@ -17,15 +17,28 @@ const processTextFile = (filePath) => {
       lines.forEach(linha => {
         var pedido = parseStringToPedido(linha)
         pedidos.push(pedido)
-      //  console.log(pedido);
       });
 
       const usuarios = groupPedidosByUser(pedidos);
-      usuarios.forEach(usuario => console.log(usuario))
+      usuarios.forEach(usuario => {
+       console.log(usuario)
+      })
       resolve();
     });
   });
 };
+
+function convertToDate(dateString) {
+  if (typeof dateString !== 'string' || dateString.length !== 8) {
+    throw new Error('Data inválida. O formato deve ser aaaammdd.');
+  }
+
+  const year = parseInt(dateString.substring(0, 4), 10);
+  const month = parseInt(dateString.substring(4, 6), 10) - 1; // Meses começam do 0 em JavaScript
+  const day = parseInt(dateString.substring(6, 8), 10);
+
+  return new Date(year, month, day);
+}
 
 function parseStringToPedido(input) {
   if (input.length !== 95) {
@@ -53,6 +66,7 @@ const groupPedidosByUser = (pedidos) => {
   const usersMap = new Map();
 
   pedidos.forEach(pedido => {
+
       // Cria uma instância de PedidoDTO
       const pedidoDTO = new PedidoDTO(
           pedido.idUsuario,
@@ -79,7 +93,7 @@ const groupPedidosByUser = (pedidos) => {
           order = {
               order_id: pedidoDTO.idPedido,
               total: 0, // Total será calculado posteriormente
-              date: new Date(pedidoDTO.dataCompra),
+              date: convertToDate(pedidoDTO.dataCompra), // Use a função convertToDate aqui
               products: [],
           };
           user.orders.push(order);
