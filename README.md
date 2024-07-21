@@ -35,7 +35,7 @@ Clone o repositório para a sua máquina local:
 
 ```bash
 Copiar código
-git clone <url-do-repositorio>
+git clone https://github.com/fortunecapitalizacoes/desafio-tecnico-luizalabs.git
 cd agrupador-de-pedidos
 ```
 ### 2. Instalar Dependências
