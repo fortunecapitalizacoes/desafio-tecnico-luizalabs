@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  mongodb-express:
+    image: mongo-express
+    container_name: mongodb-express
+    restart: always
+    ports:
+      - "8081:8081"  # Porta em que o MongoDB Express será acessível
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_PORT: "27017"
+      ME_CONFIG_BASICAUTH_USERNAME: admin  # Usuário para autenticação básica
+      ME_CONFIG_BASICAUTH_PASSWORD: password  # Senha para autenticação básica
+      ME_CONFIG_OPTIONS_EDITORTHEME: ambiance
+
+volumes:
+  mongodb_data:
