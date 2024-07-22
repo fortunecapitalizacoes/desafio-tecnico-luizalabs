@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import User from '../../models/user.js';
-import UserRepository from '../../repositories/userRepository.js'; 
+import User from '../../models/user.js';  // Importação da classe User
+import UserRepository from '../../repositories/userRepository.js';  // Importação da classe UserRepository
 
 describe('UserRepository', () => {
   let sandbox;
