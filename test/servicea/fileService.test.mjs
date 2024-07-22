@@ -1,11 +1,10 @@
-const chai = require('chai');
-const sinon = require('sinon');
-const fs = require('fs');
-const path = require('path');
-const expect = chai.expect;
-const UserService = require('../services/userService');
-const PedidoDTO = require('../dtos/PedidoDTO');
-const { processTextFile } = require('../path/to/your/module'); // Ajuste o caminho conforme necessário
+import { expect } from 'chai';
+import sinon from 'sinon';
+import fs from 'fs';
+import path from 'path';
+import pkg from '../../services/fileService.js'; // Importação padrão para módulos CommonJS
+
+const { processTextFile, convertToDate, parseStringToPedido, groupPedidosByUser } = pkg;
 
 describe('Process Text File', () => {
   let readFileStub;

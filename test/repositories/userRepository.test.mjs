@@ -1,8 +1,7 @@
-const chai = require('chai');
-const sinon = require('sinon');
-const { expect } = chai;
-const User = require('../models/user');
-const UserRepository = require('../repositories/userRepository'); // Ajuste o caminho conforme necessário
+import { expect } from 'chai';
+import sinon from 'sinon';
+import User from '../../models/user.js';
+import UserRepository from '../../repositories/userRepository.js'; 
 
 describe('UserRepository', () => {
   let sandbox;
